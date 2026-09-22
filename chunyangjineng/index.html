@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纯阳技能 - 太极门派核心武学体系与实战应用指南</title>
+    <meta name="description" content="纯阳技能详解：涵盖太虚剑意、紫霞神功、混元一气等核心心法与剑术。提供技能加点推荐、连招技巧、PVE与PVP实战策略，助你掌握太极阴阳之道。">
+    <meta name="keywords" content="纯阳技能, 太极剑法, 紫霞神功, 太虚剑意, 梦幻西游2, 门派攻略">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #c0392b;
+            --accent-color: #f39c12;
+            --bg-color: #f4f6f7;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            font-size: 1rem;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+        }
+
+        /* Skills Section */
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .skill-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .skill-type {
+            background-color: #e8f6f3;
+            color: #16a085;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .skill-desc {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .skill-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            background-color: #f0f2f5;
+            border-radius: 4px;
+            color: var(--text-light);
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .sidebar-widget {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .guide-list li {
+            margin-bottom: 12px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        .guide-list li:last-child {
+            border-bottom: none;
+        }
+
+        .guide-list a {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .guide-list a:hover {
+            color: var(--secondary-color);
+        }
+
+        .guide-meta {
+            font-size: 0.8rem;
+            color: #999;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 15px 20px;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+                text-align: center;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .skill-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span>☯</span> 纯阳技能百科
+            </div>
+            <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+            <nav>
+                <ul id="nav-list">
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#skills">核心技能</a></li>
+                    <li><a href="#guide">加点指南</a></li>
+                    <li><a href="#combo">连招技巧</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>掌握太极阴阳之道</h1>
+        <p>纯阳门派作为气宗与剑宗的统称，其技能体系以高机动性、控制能力与爆发伤害著称。本站为您提供详尽的纯阳技能解析、属性加点建议及实战连招指南。</p>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">核心心法</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12+</div>
+                <div class="stat-label">必点绝学</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">PVP/副本适配</div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Content Area -->
+        <section id="skills">
+            <h2 class="section-title">核心技能详解</h2>
+
+            <article class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-name">太虚剑意</div>
+                    <span class="skill-type">被动 · 剑宗</span>
+                </div>
+                <p class="skill-desc">剑宗核心被动技能，通过积攒剑气释放强力剑气技能。开启后大幅提升剑气伤害与暴击率，是所有剑气技能的基础。</p>
+                <div class="skill-tags">
+                    <span class="tag">暴击提升</span>
+                    <span class="tag">剑气伤害</span>
+                    <span class="tag">生存能力</span>
+                </div>
+            </article>
+
+            <article class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-name">紫霞神功</div>
+                    <span class="skill-type">主动 · 气宗</span>
+                </div>
+                <p class="skill-desc">气宗招牌技能，能够反弹近战攻击伤害。在PVP中是反制近战突脸的神技，在PVE中能有效减少受到的物理伤害。</p>
+                <div class="skill-tags">
+                    <span class="tag">反伤</span>
+                    <span class="tag">减伤</span>
+                    <span class="tag">保命核心</span>
+                </div>
+            </article>
+
+            <article class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-name">三才化生诀</div>
+                    <span class="skill-type">主动 · 气宗</span>
+                </div>
+                <p class="skill-desc">气宗核心输出技能，对前方扇形区域造成多段内功伤害。配合减CD属性，可频繁释放进行持续压制。</p>
+                <div class="skill-tags">
+                    <span class="tag">扇形AOE</span>
+                    <span class="tag">内功伤害</span>
+                    <span class="tag">持续输出</span>
+                </div>
+            </article>
+
+            <article class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-name">万剑归宗</div>
+                    <span class="skill-type">终极 · 剑宗</span>
+                </div>
+                <p class="skill-desc">剑宗大招，召唤剑阵对周围敌人造成巨额伤害并附带击飞效果。是副本聚怪爆发与PVP斩杀的关键技能。</p>
+                <div class="skill-tags">
+                    <span class="tag">巨额伤害</span>
+                    <span class="tag">击飞控制</span>
+                    <span class="tag">爆发技</span>
+                </div>
+            </article>
+
+            <article class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-name">太极两仪功</div>
+                    <span class="skill-type">主动 · 气宗</span>
+                </div>
+                <p class="skill-desc">控制型技能，将敌人击退并使其定身数秒。是打断敌方技能、拉开距离或保护队友的神技。</p>
+                <div class="skill-tags">
+                    <span class="tag">击退</span>
+                    <span class="tag">定身</span>
+                    <span class="tag">打断</span>
+                </div>
+            </article>
+
+            <h2 class="section-title">流派属性对比</h2>
+            <div class="skill-card">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>技能/属性</th>
+                            <th>剑宗 (爆发流)</th>
+                            <th>气宗 (控制流)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>核心属性</strong></td>
+                            <td>力量、暴击</td>
+                            <td>敏捷、会心</td>
+                        </tr>
+                        <tr>
+                            <td><strong>生存能力</strong></td>
+                            <td>中等 (依赖高闪避)</td>
+                            <td>较高 (依赖反伤)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>输出方式</strong></td>
+                            <td>剑气爆发、近身连斩</td>
+                            <td>内功AOE、远程压制</td>
+                        </tr>
+                        <tr>
+                            <td><strong>推荐配装</strong></td>
+                            <td>破防、破甲</td>
+                            <td>会心、内功伤害</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Sidebar -->
+        <aside>
+            <div class="sidebar-widget">
+                <h3 class="sidebar-title">加点推荐</h3>
+                <ul class="guide-list">
+                    <li>
+                        <a href="#">剑宗核心点满技能</a>
+                        <span class="guide-meta">点击查看详情</span>
+                    </li>
+                    <li>
+                        <a href="#">气宗减CD流加点思路</a>
+                        <span class="guide-meta">PVP专用</span>
+                    </li>
+                    <li>
+                        <a href="#">纯阳技能优先级排序</a>
+                        <span class="guide-meta">新手必读</span>
+                    </li>
+                    <li>
+                        <a href="#">属性洗练最佳方案</a>
+                        <span class="guide-meta">装备强化</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3 class="sidebar-title">热门攻略</h3>
+                <ul class="guide-list">
+                    <li>
+                        <a href="#">纯阳PVP实战教学：如何风筝对手</a>
+                    </li>
+                    <li>
+                        <a href="#">10人副本纯阳站位与输出循环</a>
+                    </li>
+                    <li>
+                        <a href="#">双心法切换技巧详解</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3 class="sidebar-title">技能CD与冷却</h3>
+                <p style="font-size:0.9rem; color:#666; margin-bottom:10px;">掌握冷却时间是释放连招的关键：</p>
+                <ul style="font-size:0.9rem; color:#333; line-height:1.8;">
+                    <li>• <strong>长风破浪</strong>：15秒冷却</li>
+                    <li>• <strong>两仪化形</strong>：30秒冷却</li>
+                    <li>• <strong>万剑归宗</strong>：60秒冷却</li>
+                    <li>• <strong>紫霞神功</strong>：45秒冷却</li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>关于纯阳技能</h4>
+                <p style="font-size: 0.9rem; line-height: 1.6;">本站致力于为游戏爱好者提供最详尽的纯阳门派技能解析与实战攻略。无论您是PVP竞技场的高手，还是PVE副本的输出核心，这里都有您需要的知识。</p>
+            </div>
+            <div class="footer-col">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="#">技能列表</a></li>
+                    <li><a href="#">装备推荐</a></li>
+                    <li><a href="#">职业排行</a></li>
+                    <li><a href="#">版本更新</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>社区交流</h4>
+                <ul>
+                    <li><a href="#">玩家论坛</a></li>
+                    <li><a href="#">组队大厅</a></li>
+                    <li><a href="#">公会招募</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 纯阳技能百科. All Rights Reserved. 本站内容仅供学习交流使用，不代表游戏官方立场。</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var navList = document.getElementById('nav-list');
+            navList.classList.toggle('show');
+        }
+
+        // 简单的平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // 移动端点击后自动收起菜单
+                if(window.innerWidth <= 768) {
+                    document.getElementById('nav-list').classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
