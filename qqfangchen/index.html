@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="腾讯QQ防沉迷系统查询与设置指南。详细介绍实名认证流程、未成年人防沉迷规则、每日限玩时间及如何解除防沉迷状态，提供家长监管与未成年人健康上网建议。">
+    <meta name="keywords" content="qq防沉迷,腾讯实名认证,未成年人游戏限制,QQ防沉迷设置,腾讯成长守护平台">
+    <title>QQ防沉迷-腾讯实名认证与未成年人健康上网指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #12b7f5;
+            --primary-dark: #0e8cc0;
+            --secondary-color: #f5f7fa;
+            --text-main: #2c3e50;
+            --text-sub: #606266;
+            --danger-color: #f56c6c;
+            --success-color: #67c23a;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: #f0f2f5;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-login {
+            padding: 8px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .btn-login:hover {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e0f7fa 0%, #e3f2fd 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-sub);
+            margin-bottom: 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 32px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(18, 183, 245, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 12px 32px;
+            background-color: white;
+            color: var(--primary-color);
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: #f0f9ff;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: var(--container-width);
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Rules Grid */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-sub);
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .rule-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .rule-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .rule-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .rule-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .rule-card p {
+            font-size: 14px;
+            color: var(--text-sub);
+        }
+
+        /* Process Section */
+        .process-section {
+            background: white;
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            border: 4px solid white;
+            box-shadow: 0 2px 8px rgba(18, 183, 245, 0.3);
+        }
+
+        .step h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 13px;
+            color: var(--text-sub);
+            padding: 0 10px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 60px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background-color: #fafafa;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 20px;
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #f9f9f9;
+        }
+
+        .faq-answer p {
+            padding: 0 20px 20px;
+            font-size: 14px;
+            color: var(--text-sub);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Approximate max height */
+        }
+
+        /* Footer */
+        footer {
+            background: #2b3a42;
+            color: #b0b8c1;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .process-steps {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .step {
+                display: flex;
+                align-items: flex-start;
+                text-align: left;
+                gap: 15px;
+            }
+
+            .step-number {
+                margin: 0;
+                flex-shrink: 0;
+            }
+
+            .step p {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path><path d="M8.5 8.5v.01"></path><path d="M16 12v.01"></path><path d="M12 16v.01"></path></svg>
+                <span>腾讯健康上网助手</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">防沉迷指南</a></li>
+                    <li><a href="#">实名认证</a></li>
+                    <li><a href="#">家长监护</a></li>
+                    <li><a href="#">常见问题</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn-login">立即认证</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>守护未成年人健康成长</h1>
+            <p>QQ防沉迷系统旨在通过实名认证和时长限制，引导未成年人健康上网，培养良好的游戏习惯。</p>
+            <div class="hero-actions">
+                <a href="#" class="btn-primary">查看实名认证规则</a>
+                <a href="#" class="btn-outline">家长监护平台</a>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- 核心规则 -->
+        <section class="rules-grid">
+            <article class="rule-card">
+                <span class="rule-icon">📅</span>
+                <h3>每日限时</h3>
+                <p>未成年人每天法定节假日20时至21时、每周五、周六、周日及法定节假日每日18时至21时，可登录游戏1小时。</p>
+            </article>
+            <article class="rule-card">
+                <span class="rule-icon">🆔</span>
+                <h3>实名认证</h3>
+                <p>所有用户必须完成实名信息注册。未进行实名认证或身份信息不准确的用户，将无法进行游戏。</p>
+            </article>
+            <article class="rule-card">
+                <span class="rule-icon">🚫</span>
+                <h3>禁止登录</h3>
+                <p>每日22时至次日8时，未成年用户禁止登录游戏。周末及节假日限制时长结束后，系统将自动强制下线。</p>
+            </article>
+        </section>
+
+        <!-- 认证流程 -->
+        <section class="process-section">
+            <div class="section-title">
+                <h2>实名认证流程</h2>
+                <p>请按照以下步骤完成身份验证，确保账号正常使用</p>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>进入认证入口</h4>
+                    <p>在QQ客户端点击“设置” -> “账号管理” -> “实名认证”。</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>填写真实信息</h4>
+                    <p>输入姓名、身份证号及手机号，确保信息与证件一致。</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>提交审核</h4>
+                    <p>系统将进行实时比对验证，验证通过后即可生效。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 FAQ -->
+        <section class="faq-section">
+            <div class="section-title">
+                <h2>常见问题解答</h2>
+                <p>关于QQ防沉迷系统的疑问与解答</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">为什么登录时提示“未进行实名认证”？</div>
+                <div class="faq-answer">
+                    <p>请检查您的QQ账号是否已绑定有效的身份证信息。如果未认证或认证信息错误，请前往设置中的实名认证页面进行补充或修改。未成年人账号通常会受到额外的时长限制。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">如何查询当前账号的防沉迷状态？</div>
+                <div class="faq-answer">
+                    <p>您可以在QQ的“成长守护平台”中查询孩子的游戏时长、消费记录及实名认证状态。家长可以通过绑定关系查看详细数据，从而合理安排孩子的上网时间。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">已经满18岁，如何解除防沉迷限制？</div>
+                <div class="faq-answer">
+                    <p>系统会根据您的身份证信息自动判断年龄。如果您已成年，且实名信息准确无误，防沉迷限制将自动解除。如果仍有问题，请前往腾讯客服进行申诉处理。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">未成年人账号可以充值吗？</div>
+                <div class="faq-answer">
+                    <p>未成年人账号在游戏内无法进行充值操作。所有充值行为均需经过家长验证，且家长可在成长守护平台设置消费限额，防止过度消费。</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>关于防沉迷</h4>
+                <ul>
+                    <li><a href="#">国家政策法规</a></li>
+                    <li><a href="#">腾讯成长守护平台</a></li>
+                    <li><a href="#">未成年人保护倡议</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>帮助与支持</h4>
+                <ul>
+                    <li><a href="#">联系客服</a></li>
+                    <li><a href="#">意见反馈</a></li>
+                    <li><a href="#">安全中心</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>法律条款</h4>
+                <ul>
+                    <li><a href="#">用户协议</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">未成年人保护指南</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 腾讯健康上网助手 版权所有 | 仅供信息参考，具体规则请以腾讯官方最新公告为准。</p>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的FAQ折叠交互
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项状态
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
