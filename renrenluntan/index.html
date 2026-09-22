@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人人论坛 - 优质网络社区与互助交流平台</title>
+    <meta name="description" content="人人论坛是一个致力于提供优质网络社区服务与互助交流的在线平台。涵盖生活资讯、技术分享、情感交流及热点话题讨论，是连接你我、分享生活的理想社区。">
+    <meta name="keywords" content="人人论坛,网络社区,在线交流,互助平台,生活资讯,技术分享">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary-color: #64748b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --radius-md: 8px;
+            --radius-lg: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            padding: 3rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            padding-right: 3rem;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Layout */
+        .main-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            flex: 1;
+        }
+
+        /* Content Sections */
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title a {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            font-weight: 400;
+        }
+
+        .section-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .topic-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .topic-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: #bfdbfe;
+        }
+
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .topic-meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .post-time {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        .topic-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .topic-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .topic-footer {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        .topic-footer span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .widget {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .rank-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        .rank-list li:last-child {
+            border-bottom: none;
+        }
+
+        .rank-num {
+            width: 20px;
+            height: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-sub);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .rank-list li:nth-child(1) .rank-num { background-color: #fee2e2; color: #ef4444; }
+        .rank-list li:nth-child(2) .rank-num { background-color: #ffedd5; color: #f97316; }
+        .rank-list li:nth-child(3) .rank-num { background-color: #fef9c3; color: #eab308; }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.3rem 0.8rem;
+            background-color: var(--bg-color);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background-color: #eff6ff;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 1rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-sub);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span>人人论坛</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">生活互助</a>
+                <a href="#">技术交流</a>
+                <a href="#">情感驿站</a>
+                <a href="#">休闲娱乐</a>
+                <a href="#">二手市场</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">注册</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>连接你我，分享无限可能</h1>
+            <p>在人人论坛，您不仅能找到志同道合的朋友，更能解决生活中的实际问题，获取前沿的资讯与经验。</p>
+            <div class="search-box">
+                <input type="text" placeholder="搜索话题、用户或帖子...">
+                <button aria-label="搜索">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-container">
+        <!-- Main Content Area -->
+        <section class="content-area">
+            <div class="section-title">
+                <h2>最新热议</h2>
+                <a href="#">查看更多 &rarr;</a>
+            </div>
+            
+            <div class="topic-list">
+                <article class="topic-card">
+                    <div class="topic-header">
+                        <div class="avatar">
+                            <img src="https://picsum.photos/seed/user1/100/100" alt="用户头像">
+                        </div>
+                        <div class="topic-meta">
+                            <span class="author-name">热心市民小王</span>
+                            <span class="post-time">2小时前 · 生活互助</span>
+                        </div>
+                    </div>
+                    <h3 class="topic-title">请教各位大神，如何高效整理家里的旧书和杂物？</h3>
+                    <p class="topic-excerpt">最近搬家，发现家里囤积了很多以前买的书和一些旧电子产品，想整理一下，但又不知道怎么分类比较好。有没有什么收纳神器推荐？或者有什么好的整理思路...</p>
+                    <div class="topic-footer">
+                        <span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                            128 回复
+                        </span>
+                        <span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                            342 喜欢
+                        </span>
+                        <span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            浏览 1.2w
+                        </span>
+                    </div>
+                </article>
+
+                <article class="topic-card">
+                    <div class="topic-header">
+                        <div class="avatar">
+                            <img src="https://picsum.photos/seed/user2/100/100" alt="用户头像">
+                        </div>
+                        <div class="topic-meta">
+                            <span class="author-name">科技先锋</span>
+                            <span class="post-time">4小时前 · 技术交流</span>
+                        </div>
+                    </div>
+                    <h3 class="topic-title">2024年前端开发趋势浅析：AI 辅助编程的机遇与挑战</h3>
+                    <p class="topic-excerpt">随着 Copilot 等工具的普及，前端开发者的工作方式正在发生改变。本文结合实际项目经验，探讨 AI 如何提高编码效率，以及我们在使用过程中需要注意的代码规范和版权问题...</p>
+                    <div class="topic-footer">
+                        <span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                            86 回复
+                        </span>
+                        <span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                            521 喜欢
+                        </span>
+                        <span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            浏览 8.5k
+                        </span>
+                    </div>
+                </article>
+
+                <article class="topic-card">
+                    <div class="topic-header">
+                        <div class="avatar">
+                            <img src="https://picsum.photos/seed/user3/100/100" alt="用户头像">
+                        </div>
+                        <div class="topic-meta">
+                            <span class="author-name">文艺青年</span>
+                            <span class="post-time">5小时前 · 情感驿站</span>
+                        </div>
+                    </div>
+                    <h3 class="topic-title">在快节奏的城市里，我们该如何寻找内心的平静？</h3>
+                    <p class="topic-excerpt">每天忙碌于工作和生活，焦虑似乎成了常态。想和大家聊聊那些能让自己感到放松的小习惯，比如冥想、阅读、或者仅仅是发呆。你有什么独家的解压方式吗？</p>
+                    <div class="topic-footer">
+                        <span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                            256 回复
+                        </span>
+                        <span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                            189 喜欢
+                        </span>
+                        <span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            浏览 3.1k
+                        </span>
+                    </div>
+                </article>
+
+                <article class="topic-card">
+                    <div class="topic-header">
+                        <div class="avatar">
+                            <img src="https://picsum.photos/seed/user4/100/100" alt="用户头像">
+                        </div>
+                        <div class="topic-meta">
+                            <span class="author-name">美食猎人</span>
+                            <span class="post-time">6小时前 · 休闲娱乐</span>
+                        </div>
+                    </div>
+                    <h3 class="topic-title">周末探店：发现一家藏在老巷子里的宝藏咖啡店</h3>
+                    <p class="topic-excerpt">今天路过一条没去过的老街，无意中闯进了一家很有情调的咖啡店。环境非常安静，手冲咖啡也很不错，适合周末下午来发呆或者办公。店名就在图片里，大家猜猜看？</p>
+                    <div class="topic-footer">
+                        <span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                            42 回复
+                        </span>
+                        <span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                            156 喜欢
+                        </span>
+                        <span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            浏览 980
+                        </span>
+                    </div>
+                </article>
+            </div>
+            
+            <div style="margin-top: 2rem; text-align: center;">
+                <button class="btn btn-outline">加载更多帖子</button>
+            </div>
+        </section>
+
+        <!-- Sidebar -->
+        <aside>
+            <div class="widget">
+                <h3 class="widget-title">热门榜单</h3>
+                <ul class="rank-list">
+                    <li>
+                        <span class="rank-num">1</span>
+                        <a href="#">关于年底返乡机票价格的吐槽贴</a>
+                    </li>
+                    <li>
+                        <span class="rank-num">2</span>
+                        <a href="#">新手摄影入门：如何拍出好看的人像？</a>
+                    </li>
+                    <li>
+                        <span class="rank-num">3</span>
+                        <a href="#">分享我的远程办公桌面配置</a>
+                    </li>
+                    <li>
+                        <span class="rank-num">4</span>
+                        <a href="#">推荐几部最近看过的悬疑电影</a>
+                    </li>
+                    <li>
+                        <span class="rank-num">5</span>
+                        <a href="#">求助：这种植物叫什么名字？</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <h3 class="widget-title">热门标签</h3>
+                <div class="tag-cloud">
+                    <a href="#" class="tag">#生活妙招</a>
+                    <a href="#" class="tag">#数码评测</a>
+                    <a href="#" class="tag">#情感树洞</a>
+                    <a href="#" class="tag">#职场经验</a>
+                    <a href="#" class="tag">#游戏攻略</a>
+                    <a href="#" class="tag">#美食探店</a>
+                    <a href="#" class="tag">#读书分享</a>
+                    <a href="#" class="tag">#宠物日记</a>
+                    <a href="#" class="tag">#旅游攻略</a>
+                </div>
+            </div>
+
+            <div class="widget">
+                <h3 class="widget-title">社区公告</h3>
+                <ul class="rank-list" style="padding-left: 0;">
+                    <li style="border-bottom: none; padding-left: 0;">
+                        <a href="#" style="font-size: 0.9rem; color: var(--text-sub);">关于规范社区发言的温馨提示</a>
+                    </li>
+                    <li style="border-bottom: none; padding-left: 0;">
+                        <a href="#" style="font-size: 0.9rem; color: var(--text-sub);">2024年度优秀版主评选启动</a>
+                    </li>
+                    <li style="border-bottom: none; padding-left: 0;">
+                        <a href="#" style="font-size: 0.9rem; color: var(--text-sub);">人人论坛新功能上线公告</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 1rem;">
+                    <span>人人论坛</span>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-sub); line-height: 1.8;">
+                    人人论坛致力于打造一个开放、包容、互助的优质网络社区。我们在这里分享生活点滴，交流技术心得，连接每一位有温度的用户。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>关于我们</h3>
+                <ul>
+                    <li><a href="#">社区简介</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>友情链接</h3>
+                <ul>
+                    <li><a href="#">资讯网</a></li>
+                    <li><a href="#">技术社区</a></li>
+                    <li><a href="#">生活指南</a></li>
+                    <li><a href="#">娱乐中心</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>帮助中心</h3>
+                <ul>
+                    <li><a href="#">使用指南</a></li>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">意见反馈</a></li>
+                    <li><a href="#">违规举报</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 人人论坛 版权所有. 本站内容仅供学习交流使用.</p>
+        </div>
+    </footer>
+
+</body>
+                      </html>
