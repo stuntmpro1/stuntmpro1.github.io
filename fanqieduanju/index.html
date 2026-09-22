@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="番茄短剧平台提供海量免费短剧观看，涵盖都市情感、古装穿越、悬疑推理等多种题材。高清画质，更新快，随时随地畅享精彩剧情。">
+    <meta name="keywords" content="番茄短剧,免费短剧,在线观看,短剧推荐,热门短剧">
+    <title>番茄短剧-海量免费短剧在线观看与热门推荐平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff5e00;
+            --primary-hover: #e04d00;
+            --secondary-color: #1a1a1a;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-body: #f5f5f7;
+            --bg-card: #ffffff;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-top: 40px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            bottom: 4px;
+            width: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .view-all {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .view-all:hover {
+            color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: #f0f0f2;
+            border-radius: 20px;
+            padding: 6px 12px;
+            width: 240px;
+        }
+
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .search-bar button {
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            mix-blend-mode: multiply;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 16px;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.9);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: var(--secondary-color);
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 28px;
+            border-radius: 24px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 94, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-card {
+            width: 280px;
+            height: 380px;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .hero-card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-container.cols-4 {
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        /* Card Component */
+        .video-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-cover {
+            position: relative;
+            width: 100%;
+            padding-top: 133%; /* 3:4 Aspect Ratio */
+            background-color: #eee;
+        }
+
+        .card-cover img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .card-play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 32px;
+            height: 32px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .video-card:hover .card-play-icon {
+            opacity: 1;
+        }
+
+        .card-info {
+            padding: 12px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 4px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 40px;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .tag {
+            background: #f0f0f2;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--text-light);
+        }
+
+        /* Categories */
+        .category-scroll {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 24px;
+            scrollbar-width: none;
+        }
+
+        .category-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-item {
+            flex-shrink: 0;
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cat-item.active, .cat-item:hover {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+
+        /* Banner Ad Placeholder */
+        .ad-banner {
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(90deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: var(--radius-md);
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+            font-size: 18px;
+            position: relative;
+        }
+        
+        .ad-banner::after {
+            content: '广告';
+            position: absolute;
+            top: 4px;
+            right: 8px;
+            font-size: 10px;
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 12px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #eee;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links, .search-bar {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                height: auto;
+                padding: 40px 0;
+            }
+
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .grid-container.cols-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#ff5e00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#ff5e00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#ff5e00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                番茄短剧<span>APP</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">热门榜单</a>
+                <a href="#">最新更新</a>
+                <a href="#">分类大全</a>
+                <a href="#">会员中心</a>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="搜索短剧、演员...">
+                <button>🔍</button>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <img src="https://picsum.photos/seed/dramahero/1600/900" alt="Background" class="hero-bg">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-tag">本周爆款</span>
+                    <h1>豪门恩怨：千亿总裁的替身娇妻</h1>
+                    <p>一场蓄谋已久的婚姻，当真相揭开，她是否还能全身而退？沉浸式短剧体验，反转不断，爽感十足。</p>
+                    <button class="btn btn-primary">立即观看</button>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <img src="https://picsum.photos/seed/drama1/400/600" alt="Cover">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Categories -->
+            <section class="categories">
+                <div class="category-scroll">
+                    <div class="cat-item active">推荐</div>
+                    <div class="cat-item">都市情感</div>
+                    <div class="cat-item">古装穿越</div>
+                    <div class="cat-item">甜宠爽文</div>
+                    <div class="cat-item">悬疑推理</div>
+                    <div class="cat-item">霸道总裁</div>
+                    <div class="cat-item">重生复仇</div>
+                    <div class="cat-item">乡村爱情</div>
+                </div>
+            </section>
+
+            <!-- Hot Ranking Section -->
+            <section class="section-header">
+                <h2 class="section-title">全网热播榜</h2>
+                <a href="#" class="view-all">查看完整榜单 &gt;</a>
+            </section>
+            
+            <div class="grid-container cols-4">
+                <!-- Card 1 -->
+                <article class="video-card">
+                    <div class="card-cover">
+                        <img src="https://picsum.photos/seed/drama2/300/400" alt="Short Drama Cover">
+                        <span class="card-badge">HD</span>
+                        <div class="card-play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">闪婚老公是千亿大佬</h3>
+                        <div class="card-meta">
+                            <span class="tag">都市</span>
+                            <span>更新至12集</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="video-card">
+                    <div class="card-cover">
+                        <img src="https://picsum.photos/seed/drama3/300/400" alt="Short Drama Cover">
+                        <span class="card-badge">HOT</span>
+                        <div class="card-play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">废柴少爷的逆袭之路</h3>
+                        <div class="card-meta">
+                            <span class="tag">玄幻</span>
+                            <span>更新至85集</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="video-card">
+                    <div class="card-cover">
+                        <img src="https://picsum.photos/seed/drama4/300/400" alt="Short Drama Cover">
+                        <div class="card-play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">首富千金回国了</h3>
+                        <div class="card-meta">
+                            <span class="tag">言情</span>
+                            <span>更新至45集</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="video-card">
+                    <div class="card-cover">
+                        <img src="https://picsum.photos/seed/drama5/300/400" alt="Short Drama Cover">
+                        <div class="card-play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">绝世医妃：王爷请接招</h3>
+                        <div class="card-meta">
+                            <span class="tag">古装</span>
+                            <span>更新至30集</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="video-card">
+                    <div class="card-cover">
+                        <img src="https://picsum.photos/seed/drama6/300/400" alt="Short Drama Cover">
+                        <div class="card-play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">隐婚老公是首富</h3>
+                        <div class="card-meta">
+                            <span class="tag">甜宠</span>
+                            <span>更新至99集</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="video-card">
+                    <div class="card-cover">
+                        <img src="https://picsum.photos/seed/drama7/300/400" alt="Short Drama Cover">
+                        <div class="card-play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">回到1990当首富</h3>
+                        <div class="card-meta">
+                            <span class="tag">年代</span>
+                            <span>更新至200集</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 7 -->
+                <article class="video-card">
+                    <div class="card-cover">
+                        <img src="https://picsum.photos/seed/drama8/300/400" alt="Short Drama Cover">
+                        <div class="card-play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">我在精神病院学斩神</h3>
+                        <div class="card-meta">
+                            <span class="tag">悬疑</span>
+                            <span>更新至56集</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 8 -->
+                <article class="video-card">
+                    <div class="card-cover">
+                        <img src="https://picsum.photos/seed/drama9/300/400" alt="Short Drama Cover">
+                        <div class="card-play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">赘婿逆袭：龙王殿</h3>
+                        <div class="card-meta">
+                            <span class="tag">逆袭</span>
+                            <span>更新至120集</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Ad Banner -->
+            <div class="ad-banner">
+                会员专享：开通VIP畅看所有短剧，无广告，高清画质
+            </div>
+
+            <!-- New Updates Section -->
+            <section class="section-header">
+                <h2 class="section-title">最新更新</h2>
+                <a href="#" class="view-all">查看更多 &gt;</a>
+            </section>
+
+            <div class="grid-container cols-4">
+                <article class="video-card">
+                    <div class="card-cover">
+                        <img src="https://picsum.photos/seed/drama10/300/400" alt="Short Drama Cover">
+                        <div class="card-play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">霸道总裁的落跑新娘</h3>
+                        <div class="card-meta">
+                            <span class="tag">新剧</span>
+                            <span>更新至5集</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="video-card">
+                    <div class="card-cover">
+                        <img src="https://picsum.photos/seed/drama11/300/400" alt="Short Drama Cover">
+                        <div class="card-play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">我在古代当神医</h3>
+                        <div class="card-meta">
+                            <span class="tag">古装</span>
+                            <span>更新至20集</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="video-card">
+                    <div class="card-cover">
+                        <img src="https://picsum.photos/seed/drama12/300/400" alt="Short Drama Cover">
+                        <div class="card-play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">萌宝助攻：爹地请签收</h3>
+                        <div class="card-meta">
+                            <span class="tag">亲子</span>
+                            <span>更新至8集</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="video-card">
+                    <div class="card-cover">
+                        <img src="https://picsum.photos/seed/drama13/300/400" alt="Short Drama Cover">
+                        <div class="card-play-icon">▶</div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">绝地反击：从负债开始</h3>
+                        <div class="card-meta">
+                            <span class="tag">励志</span>
+                            <span>更新至15集</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        番茄短剧<span>APP</span>
+                    </a>
+                    <p>番茄短剧致力于为用户提供最优质的短剧内容，涵盖都市、古装、悬疑等多种题材，随时随地畅享精彩剧情。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">平台介绍</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">用户协议</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">账号充值</a></li>
+                        <li><a href="#">设备播放问题</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>友情链接</h4>
+                    <ul>
+                        <li><a href="#">番茄小说</a></li>
+                        <li><a href="#">番茄影视</a></li>
+                        <li><a href="#">番茄游戏</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 番茄短剧 版权所有 | 仅供演示使用</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
